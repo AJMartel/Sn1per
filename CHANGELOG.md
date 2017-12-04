@@ -1,4 +1,60 @@
 ## CHANGELOG:
+* v2.9 - New improved fullportonly scan mode
+* v2.9 - Added online check to see if there's an active internet connection
+* v2.9 - Changed default browser to firefox to clear up errors in loot commmand
+* v2.9 - Created uninstall.sh script to uninstall sniper
+* v2.9 - Removed automatic workspace creation per scan
+* v2.9 - Added curl timeout in update command to fix lag
+* v2.9 - Fixed minor NMap UDP scan flag issue
+* v2.9 - Added Metagoofil
+* v2.9 - Updated theharvester scan options to include more results
+* v2.8 - Improved discovery mode scan performance and output
+* v2.8 - Improved fullportonly scan performance
+* v2.8 - Improved startup performance options
+* v2.8 - Added Cansina web/file brute force tool
+* v2.8 - Added webporthttp and webporthttps modes
+* v2.8 - Added custerd software enumeration tool
+* v2.7 - Fixed issue with sniper update command and install.sh not running
+* v2.7 - Fixed errors with GooHak
+* v2.7 - Fixed syntax errors in sniper conditional statements 
+* v2.7 - Added CloudFail 
+* v2.7 - Fixed issue with [: ==: unary operator expected errors
+* v2.6 - Added Blackarch Linux support 
+* v2.6 - Added $BROWSER variable to set default browser
+* v2.5g - Updated README with update command
+* v2.5f - Fixes for various bugs reported and fixed by @ifly53e (https://github.com/1N3/Sn1per/pull/89)
+* v2.5e - Fixed issue with port 3128/tcp checks (CC. @ifly53e)
+* v2.5d - Added searchsploit option for (-v) to search all terms (CC. @ifly53e)
+* v2.5c - Added various improvements to 'discover' mode scans
+* v2.5b - Removed NMap script checks for 'fullportonly' mode
+* v2.5a - Added auto-updates to check and download new versions
+* v2.5a - Fixed issue with install.sh to resolve pip aha error
+* v2.5a - Added libxml2-utils to install.sh to meet dependencies
+* v2.5 - Added HTML report generation via sniper 'loot' command
+* v2.5 - Added automatic NMap searchsploit integration to find exploits
+* v2.5 - Added various improvements to Sn1per discovery scan mode
+* v2.5 - Fixed issue with IIS BoF NMap script (CC. ifly53e)
+* v2.4f - Fixed issue with upper NMap port range(CC. DaveW)
+* v2.4e - Added NMap no ping switch to all scans
+* v2.4d - Fixed issue with rpcinfo install script
+* v2.4d - Fixed issue with Arachni install script
+* v2.4c - Added loot and $TARGET sanity checks (CC. @menzow)
+* v2.4b - Fixed issue with discovery scan output file (CC. @ifly53e)
+* v2.4b - Fixed issue with Intel AMT RCE port list
+* v2.4a - Added all NMap script checks via 'fullportonly' mode
+* v2.4a - Added JBoss JMX Console Beanshell Deployer WAR Upload and Deployment Metasploit exploit
+* v2.4a - Added Java RMI RCE NMap/Metasploit detection
+* v2.4a - Added INTEL-SA-00075 (Intel AMT) vulnerability NMap script
+* v2.4 - Added detection for open X11 servers
+* v2.4 - Added IIS6 Win2k3 RCE NMap script
+* v2.4 - Added option to disable Google Hacking queries via Firefox
+* v2.3d - Fixed issue with loot command
+* v2.3c - Added Apache Struts 2 RCE NMap script
+* v2.3c - Added Apache Struts 2 RCE NMap exploit
+* v2.3b - Changed NMap scan options to exclude ping sweeps (-P0)
+* v2.3a - Fixed minor issue with MSSQL NMap script command (CC. @helo86)
+* v2.3 - Fixed minor issues with missing $TARGET definitions for NMap (CC. @helo86)
+* v2.2f - Added various optimizations and minor code fixes
 * v2.2e - Changed NMap scan options (removed -P0 flag)
 * v2.2d - Added MongoDB checks
 * v2.2d - Improved NMap scanning options
@@ -134,3 +190,4 @@
 
 ## FUTURE:
 * Add auto logging and reporting to all scans
+* Add HTML reporting for scans

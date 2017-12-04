@@ -32,12 +32,13 @@ mkdir $LOOT_DIR/screenshots 2> /dev/null
 mkdir $LOOT_DIR/nmap 2> /dev/null
 mkdir $LOOT_DIR/reports 2> /dev/null
 mkdir $LOOT_DIR/output 2> /dev/null
-cp -Rf $PWD/* $INSTALL_DIR 
+mkdir $LOOT_DIR/osint 2> /dev/null
+cp -Rf $PWD/* $INSTALL_DIR 2> /dev/null
 cd $INSTALL_DIR
 
 echo -e "$OKORANGE + -- --=[Installing package dependencies...$RESET"
-apt-get install ruby rubygems python dos2unix zenmap sslyze uniscan xprobe2 cutycapt unicornscan waffit host whois dirb dnsrecon curl nmap php php-curl hydra iceweasel wpscan sqlmap nbtscan enum4linux cisco-torch metasploit-framework theharvester dnsenum nikto smtp-user-enum whatweb sslscan amap
-pip install dnspython colorama tldextract urllib3 ipaddress arachni
+apt-get install xdg-utils metagoofil clusterd ruby rubygems python dos2unix zenmap sslyze arachni aha libxml2-utils rpcbind uniscan xprobe2 cutycapt unicornscan waffit host whois dirb dnsrecon curl nmap php php-curl hydra iceweasel wpscan sqlmap nbtscan enum4linux cisco-torch metasploit-framework theharvester dnsenum nikto smtp-user-enum whatweb sslscan amap
+pip install dnspython colorama tldextract urllib3 ipaddress requests
 
 echo -e "$OKORANGE + -- --=[Installing gem dependencies...$RESET"
 gem install rake
@@ -45,8 +46,9 @@ gem install ruby-nmap net-http-persistent mechanize text-table
 
 echo -e "$OKORANGE + -- --=[Cleaning up old extensions...$RESET"
 rm -Rf Findsploit/ BruteX/ Goohak/ XSSTracer/ MassBleed/ SuperMicro-Password-Scanner/ CMSmap/ yasuo/ Sublist3r/ shocker/ jexboss/ serializekiller/ testssl.sh/ SimpleEmailSpoofer/ ssh-audit/ plugins/ 2> /dev/null
-mkdir $PLUGINS_DIR
+mkdir $PLUGINS_DIR 2> /dev/null
 cd $PLUGINS_DIR
+mkdir -p $PLUGINS_DIR/nmap_scripts/ 2> /dev/null
 
 echo -e "$OKORANGE + -- --=[Downloading extensions...$RESET"
 git clone https://github.com/1N3/Findsploit.git 
@@ -60,10 +62,17 @@ git clone https://github.com/0xsauby/yasuo.git
 git clone https://github.com/johndekroon/serializekiller.git 
 git clone https://github.com/aboul3la/Sublist3r.git 
 git clone https://github.com/nccgroup/shocker.git 
-git clone https://github.com/drwetter/testssl.sh.git 
+git clone --depth 1 https://github.com/drwetter/testssl.sh.git 
 git clone https://github.com/lunarca/SimpleEmailSpoofer 
 git clone https://github.com/arthepsy/ssh-audit 
+git clone https://github.com/m0rtem/CloudFail.git
+git clone https://github.com/deibit/cansina
+wget https://raw.githubusercontent.com/1N3/IntruderPayloads/master/FuzzLists/dirbuster-quick.txt -O /usr/share/sniper/plugins/cansina/dirbuster-quick.txt
+wget https://svn.nmap.org/nmap/scripts/http-vuln-cve2017-5638.nse -O /usr/share/nmap/scripts/http-vuln-cve2017-5638.nse
+wget https://raw.githubusercontent.com/xorrbit/nmap/865142904566e416944ebd6870d496c730934965/scripts/http-vuln-INTEL-SA-00075.nse -O /usr/share/nmap/scripts/http-vuln-INTEL-SA-00075.nse
+cp $INSTALL_DIR/bin/iis-buffer-overflow.nse /usr/share/nmap/scripts/iis-buffer-overflow.nse 2> /dev/null
 echo -e "$OKORANGE + -- --=[Setting up environment...$RESET"
+cd $PLUGINS_DIR/CloudFail/ && apt-get install python3-pip && pip3 install -r requirements.txt
 cd $PLUGINS_DIR/Findsploit/ && bash install.sh
 cd $PLUGINS_DIR/BruteX/ && bash install.sh
 cd $INSTALL_DIR 
@@ -102,5 +111,3 @@ ln -s $PLUGINS_DIR/MassBleed/massbleed /usr/bin/massbleed
 ln -s $PLUGINS_DIR/testssl.sh/testssl.sh /usr/bin/testssl
 echo -e "$OKORANGE + -- --=[Done!$RESET"
 echo -e "$OKORANGE + -- --=[To run, type 'sniper'! $RESET"
-
-
